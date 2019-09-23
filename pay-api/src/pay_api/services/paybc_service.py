@@ -188,7 +188,7 @@ class PaybcService(PaymentSystemService, OAuthService):
             party.get('party_number', None))
         account: Dict[str, Any] = {
             'party_number': party.get('party_number'),
-            'account_description': party.get('customer_name')
+            'account_description': party.get('customer_name')[:30]
         }
 
         account_response = self.post(account_url, access_token, AuthHeaderType.BEARER, ContentType.JSON, account)
